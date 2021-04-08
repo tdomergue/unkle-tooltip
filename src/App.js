@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Tooltip from "./Tooltip";
+import "./styles.css";
+import logo from "./unkle_logo.png";
+import LogoContent from "./LogoContent.js";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello, this is a React tooltip demo</h1>
+      <p> Try to interact with the elements below </p>
+
+      <div className="wrapper">
+        <Tooltip content={<LogoContent/>}>
+          <img className="logo" src={logo} alt="Unkle Logo"/>
+        </Tooltip>
+      </div>
+
+      <div className="wrapper">
+        <Tooltip content="Quack!" direction="top">
+          <button>I'm a button</button>
+        </Tooltip>
+      </div>
+
+      <div className="wrapper">
+        <Tooltip content="Yes!" direction="top">
+          <input type="text" id="name" name="name" required
+          minLength="4" maxLength="8" size="10" />
+        </Tooltip>
+      </div>
+
     </div>
   );
 }
-
-export default App;

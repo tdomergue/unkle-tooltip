@@ -1,0 +1,17 @@
+.App {
+  font-family: sans-serif;
+  padding: 16px 16px 128px;
+}
+
+.wrapper {
+  padding: 16px 120px;
+}
+
+.logo {
+  width: 100px;
+}
+a {
+  text-decoration: none;
+  color: var(--tooltip-text-color);
+  font-weight: 700;
+}
