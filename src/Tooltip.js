@@ -8,14 +8,16 @@ const Tooltip = (props) => {
 
   const showTip = () => {
     timeout = setTimeout(() => {
+      console.log("mouseON");
       setActive(true);
     }, props.delay || 400);
   };
-
+  
   const hideTip = () => {
+    clearInterval(timeout);
     setTimeout(() => {
-      clearInterval(timeout);
       setActive(false);  
+      console.log("mouseOFF");
     }, 1000);
   };
 
@@ -23,13 +25,14 @@ const Tooltip = (props) => {
     <div
       className="Tooltip-Wrapper"
       // When to show the tooltip
-      onMouseEnter={(props.children.type === "input") ? undefined : showTip}
-      onMouseLeave={(props.children.tye === "input") ? undefined : hideTip}
-      onClick={(props.children.type === "input") ? () => setActive(true) : undefined}
+      // NB : Components manage their eventHandlers themselves
+      onMouseEnter={(props.children.type === "input") || (typeof props.children.type === "function") ? undefined : showTip}
+      onMouseLeave={(props.children.type === "input") || (typeof props.children.type === "function") ? undefined : hideTip}
+      onFocus={(props.children.type === "input") ? () => setActive(true) : undefined}
+      onBlur={(props.children.type === "input") ? () => setActive(false) : undefined}
     >
       {/* Wrapping */}
-      {props.children}
-      {console.log(props.children)}
+      {(typeof props.children.type === "function") ? React.cloneElement(props.children, { active: active, setActive: setActive }) : props.children}
       {(active || activeTip) && (
         <div 
           className={`Tooltip-Tip ${props.direction || "top"}`}
@@ -37,7 +40,6 @@ const Tooltip = (props) => {
           onMouseLeave={() => setActiveTip(false)}
           >
           {/* Content */}
-          {console.log(props.content)}
           {props.content}
         </div>
       )}

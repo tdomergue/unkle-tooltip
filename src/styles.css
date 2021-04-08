@@ -15,3 +15,7 @@ a {
   color: var(--tooltip-text-color);
   font-weight: 700;
 }
+
+.simple-input {
+  width: 120px;
+}

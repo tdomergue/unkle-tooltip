@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LogoContent = (props) => {
+const LogoTooltip = (props) => {
   return (
     <div>      
         <p>This is the Unkle logo</p>
@@ -9,4 +9,4 @@ const LogoContent = (props) => {
   );
 }; 
 
-export default LogoContent;
+export default LogoTooltip;
