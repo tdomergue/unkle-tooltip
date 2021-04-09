@@ -1,5 +1,12 @@
-import React, { useState } from 'react';
-import validationMap from './PasswordInput';
+import React from 'react';
+
+const validationMap = {
+  lowercase: value => /[a-z]/.test(value),
+  uppercase: value => /[A-Z]/.test(value),
+  special: value => /[!@#$%^&*+_\-~]/.test(value),
+  numeric: value => /[0-9]/.test(value),
+  length: value => value.length >= 8
+};
 
 const Requirement = ({ children, type, value }) => {
   const predicate = validationMap[type];
@@ -13,25 +20,24 @@ const Requirement = ({ children, type, value }) => {
   );
 }
 
-const InputTooltip = () => {
-  const [value, setValue] = useState("");
+const InputTooltip = (props) => {
 
   return (
-    <ul>
-      <div>Choose a secure password</div>
-      <Requirement value={value} type="length">
+    <ul className="input-tooltip">
+      <h4>Choose a secure password</h4>
+      <Requirement value={props.value} type="length">
         8 characters
       </Requirement>
-      <Requirement value={value} type="uppercase">
+      <Requirement value={props.value} type="uppercase">
         1 uppercase letter
       </Requirement>
-      <Requirement value={value} type="lowercase">
+      <Requirement value={props.value} type="lowercase">
         1 lowercase letter
       </Requirement>
-      <Requirement value={value} type="special">
+      <Requirement value={props.value} type="special">
         1 special character
       </Requirement>
-      <Requirement value={value} type="numeric">
+      <Requirement value={props.value} type="numeric">
         1 number
       </Requirement>
     </ul>

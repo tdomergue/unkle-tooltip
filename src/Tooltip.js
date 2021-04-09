@@ -5,6 +5,7 @@ const Tooltip = (props) => {
   let timeout;
   const [active, setActive] = useState(false);
   const [activeTip, setActiveTip] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   const showTip = () => {
     timeout = setTimeout(() => {
@@ -32,7 +33,7 @@ const Tooltip = (props) => {
       onBlur={(props.children.type === "input") ? () => setActive(false) : undefined}
     >
       {/* Wrapping */}
-      {(typeof props.children.type === "function") ? React.cloneElement(props.children, { active: active, setActive: setActive }) : props.children}
+      {(typeof props.children.type === "function") ? React.cloneElement(props.children, { active: active, setActive: setActive, value: inputValue, setValue: setInputValue }) : props.children}
       {(active || activeTip) && (
         <div 
           className={`Tooltip-Tip ${props.direction || "top"}`}
@@ -40,7 +41,7 @@ const Tooltip = (props) => {
           onMouseLeave={() => setActiveTip(false)}
           >
           {/* Content */}
-          {props.content}
+          {(typeof props.children.type === "function") ? React.cloneElement(props.content, { value: inputValue }) : props.content}
         </div>
       )}
     </div>

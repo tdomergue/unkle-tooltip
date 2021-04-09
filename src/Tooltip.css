@@ -91,3 +91,30 @@
   transform: translateX(0) translateY(-50%);
   border-left-color: var(--tooltip-background-color);
 }
+
+/* Absolute positioning */
+.Tooltip-Tip.bottom-component {
+  bottom: calc(-(100% + var(--tooltip-margin)));
+}
+/* CSS border triangles */
+.Tooltip-Tip.bottom-component::before {
+  bottom: 100%;
+  border-bottom-color: var(--tooltip-background-color);
+}
+
+
+/* Components tooltips design */
+.input-tooltip {
+  list-style: none;
+  padding-left: 32px;
+  padding-right: 16px;
+}
+.input-tooltip span {
+  position: absolute;
+  left: 16px;
+}
+a {
+  text-decoration: none;
+  color: var(--tooltip-text-color);
+  font-weight: 700;
+}
