@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,400&display=swap');
+
 .App {
-  font-family: sans-serif;
+  font-family: "Montserrat", "Helvetica", "sans-serif";;
   padding: 16px 16px 128px;
 }
 
@@ -13,4 +15,15 @@
 
 .simple-input {
   width: 120px;
+}
+.btn {
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  cursor: pointer;
+  color: var(--tooltip-text-color);
+  padding: 5px 15px;
+  background-color: var(--tooltip-background-color);
+  border: 1px solid var(--tooltip-background-color);
+  border-radius: 8px;
 }

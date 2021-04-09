@@ -20,7 +20,7 @@ const App = () => {
 
       <div className="wrapper">
         <Tooltip content="Click me!" direction="left">
-          <button>I'm a button</button>
+          <button className="btn">I'm a button</button>
         </Tooltip>
       </div>
 
